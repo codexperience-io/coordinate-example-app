@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Driver" representedClassName="Driver" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="favorite_in_profiles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Profile" inverseName="favorite_drivers" inverseEntity="Profile" syncable="YES"/>
+        <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="drivers" inverseEntity="Team" syncable="YES"/>
+    </entity>
+    <entity name="Profile" representedClassName="Profile" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="favorite_drivers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Driver" inverseName="favorite_in_profiles" inverseEntity="Driver" syncable="YES"/>
+        <relationship name="favorite_teams" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Team" inverseName="favorite_in_profiles" inverseEntity="Team" syncable="YES"/>
+    </entity>
+    <entity name="Team" representedClassName="Team" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="drivers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Driver" inverseName="team" inverseEntity="Driver" syncable="YES"/>
+        <relationship name="favorite_in_profiles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Profile" inverseName="favorite_teams" inverseEntity="Profile" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Driver" positionX="-382.93359375" positionY="-228.8984375" width="128" height="90"/>
+        <element name="Profile" positionX="-207.78515625" positionY="163.95703125" width="128" height="88"/>
+        <element name="Team" positionX="-63" positionY="-18" width="128" height="90"/>
+    </elements>
+</model>

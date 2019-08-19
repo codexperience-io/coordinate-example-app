@@ -1,0 +1,21 @@
+PODS:
+  - Coordinate (1.0.0)
+
+DEPENDENCIES:
+  - Coordinate (from `https://github.com/codexperience-io/coordinate.git`)
+
+EXTERNAL SOURCES:
+  Coordinate:
+    :git: https://github.com/codexperience-io/coordinate.git
+
+CHECKOUT OPTIONS:
+  Coordinate:
+    :commit: 45de855a66d6e7cec3fd3a11976f39ef06ee9f76
+    :git: https://github.com/codexperience-io/coordinate.git
+
+SPEC CHECKSUMS:
+  Coordinate: 7acc7ee476e9ef58f1894809595bef8a6c1bc2f7
+
+PODFILE CHECKSUM: 575037e05b36dc4dee54625ab23dc4f328e66def
+
+COCOAPODS: 1.6.1
