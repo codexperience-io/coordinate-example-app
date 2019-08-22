@@ -55,14 +55,14 @@ extension AppCoordinator: HasRoutes {
     }
     
     func goTo(_ route: Route) {
-        self.activeRoute = route
-        
-        switch self.activeRoute {
+        switch route {
         case .splash:
             self.showSplashScreen()
         case .mainNavigation:
             self.showMainNavigationScreen()
         }
+        
+        self.activeRoute = route
     }
     
     private func showSplashScreen() {

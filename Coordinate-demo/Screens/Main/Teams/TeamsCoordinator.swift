@@ -14,12 +14,6 @@ class TeamsCoordinator: NavigationCoordinator<TeamsNavigationViewController>, Ha
     
     var dependencies: AppDependencies?
     
-    enum Route: Equatable {
-        case list
-        case team(_ team: Team)
-        case driver(_ driver: Driver)
-    }
-    
     var activeRoute: Route = .list
     
     override init() {
@@ -48,12 +42,16 @@ class TeamsCoordinator: NavigationCoordinator<TeamsNavigationViewController>, Ha
     }
 }
 
-private extension TeamsCoordinator {
+extension TeamsCoordinator: HasRoutes {
+    
+    enum Route: Equatable {
+        case list
+        case team(_ team: Team)
+        case driver(_ driver: Driver)
+    }
     
     func goTo(_ route: Route) {
-        self.activeRoute = route
-        
-        switch self.activeRoute {
+        switch route {
         case .list:
             self.showListScreen()
         case .team(let team):
@@ -61,20 +59,22 @@ private extension TeamsCoordinator {
         case .driver(let driver):
             self.showDriverScreen(driver)
         }
+        
+        self.activeRoute = route
     }
     
-    func showListScreen() {
+    private func showListScreen() {
         let coordinator = getCached(TeamsListCoordinator.self) ?? TeamsListCoordinator()
         self.root(coordinator)
     }
     
-    func showTeamScreen(_ team: Team) {
+    private func showTeamScreen(_ team: Team) {
         let coordinator = getCached(TeamsDetailsCoordinator.self) ?? TeamsDetailsCoordinator()
         coordinator.team = team
         self.show(coordinator, sender: self)
     }
     
-    func showDriverScreen(_ driver: Driver) {
+    private func showDriverScreen(_ driver: Driver) {
         let coordinator = getCached(DriversDetailsCoordinator.self) ?? DriversDetailsCoordinator()
         coordinator.driver = driver
         self.show(coordinator, sender: self)

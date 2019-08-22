@@ -50,13 +50,11 @@ class DriversCoordinator: NavigationCoordinator<DriversNavigationViewController>
     }
 }
 
-
-private extension DriversCoordinator {
+extension DriversCoordinator: HasRoutes {
+    // MARK: - Routing
     
     func goTo(_ route: Route) {
-        self.activeRoute = route
-        
-        switch self.activeRoute {
+        switch route {
         case .list:
             self.showListScreen()
         case .team(let team):
@@ -64,22 +62,24 @@ private extension DriversCoordinator {
         case .driver(let driver):
             self.showDriverScreen(driver)
         }
+        
+        self.activeRoute = route
     }
     
-    func showListScreen() {
+    private func showListScreen() {
         let coordinator = getCached(DriversListCoordinator.self) ?? DriversListCoordinator()
         coordinator.dependencies = dependencies
         self.root(coordinator)
     }
     
-    func showTeamScreen(_ team: Team) {
+    private func showTeamScreen(_ team: Team) {
         let coordinator = getCached(TeamsDetailsCoordinator.self) ?? TeamsDetailsCoordinator()
         coordinator.dependencies = dependencies
         coordinator.team = team
         self.show(coordinator, sender: self)
     }
     
-    func showDriverScreen(_ driver: Driver) {
+    private func showDriverScreen(_ driver: Driver) {
         let coordinator = getCached(DriversDetailsCoordinator.self) ?? DriversDetailsCoordinator()
         coordinator.dependencies = dependencies
         coordinator.driver = driver

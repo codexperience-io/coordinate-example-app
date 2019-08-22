@@ -97,9 +97,7 @@ extension MainCoordinator: HasRoutes {
     }
     
     func goTo(_ route: Route) {
-        self.activeRoute = route
-        
-        switch self.activeRoute {
+        switch route {
         case .teams(let subScreen):
             showTeamsScreen(subScreen)
         case .drivers(let subScreen):
@@ -107,6 +105,8 @@ extension MainCoordinator: HasRoutes {
         case .profile:
             showProfileScreen()
         }
+        
+        self.activeRoute = route
     }
     
     private func showTeamsScreen(_ subRoute: TeamsCoordinator.Route? = nil) {
