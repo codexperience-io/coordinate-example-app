@@ -11,8 +11,8 @@ import UIKit
 
 extension UIResponder {
     
-    @objc dynamic func onboardingDidFinish() {
-        coordinatingResponder?.onboardingDidFinish()
+    @objc dynamic func splashDidFinish() {
+        coordinatingResponder?.splashDidFinish()
     }
     
 }

@@ -40,7 +40,7 @@ class AppCoordinator: ContainerCoordinator<AppViewController>, HasDependencies {
     
     // MARK: - CoordinatingResponder
     
-    override func onboardingDidFinish() {
+    override func splashDidFinish() {
         goTo(.mainNavigation)
     }
     

@@ -11,5 +11,5 @@ import Coordinate
 
 class SplashCoordinator: Coordinator<SplashViewController> {
     
-    // nothing needs to be overriden here, onboardingDidFinish() will be catch by parent Coordinator
+    // nothing needs to be overriden here, splashDidFinish() will be catch by parent Coordinator
 }
