@@ -8,8 +8,10 @@
 //
 
 import UIKit
+import Coordinate
 
-class DriversDetailsViewController: UIViewController, HasFavoriteButton {
+class DriversDetailsViewController: UIViewController, HasFavoriteButton, Coordinated {
+    var parentCoordinator: Coordinating?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var teamButton: UIButton!
@@ -19,7 +21,7 @@ class DriversDetailsViewController: UIViewController, HasFavoriteButton {
             return
         }
         
-        didSelect(team: team)
+        emitEvent(AppEvents.Teams.didSelect(team))
     }
     
     var favoriteButton: UIBarButtonItem?
@@ -59,10 +61,10 @@ class DriversDetailsViewController: UIViewController, HasFavoriteButton {
         guard let driver = self.driver else { return }
         
         if driver.isFavorite() {
-            unsetFavorite(driver: driver)
+            emitEvent(AppEvents.Drivers.unsetFavorite(driver))
             setFavoriteButtonIcon(false)
         } else {
-            setFavorite(driver: driver)
+            emitEvent(AppEvents.Drivers.setFavorite(driver))
             setFavoriteButtonIcon(true)
         }
     }

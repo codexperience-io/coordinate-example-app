@@ -38,14 +38,13 @@
 		D9745A3A22F9F261003F6838 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9745A3822F9F261003F6838 /* DataModel.xcdatamodeld */; };
 		D9745A3D22FA486B003F6838 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9745A3C22FA486B003F6838 /* AppDependencies.swift */; };
 		D9745A5C22FADC05003F6838 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9745A5B22FADC05003F6838 /* DataManager.swift */; };
-		D9CF812E23072E2D002B1B8D /* SplashCoordinating-Responder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF812D23072E2D002B1B8D /* SplashCoordinating-Responder.swift */; };
+		D9780BA52314DB1500730B54 /* AppEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9780BA42314DB1500730B54 /* AppEvents.swift */; };
 		D9CF813023072E6A002B1B8D /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CF812F23072E6A002B1B8D /* SplashViewController.swift */; };
 		D9CF813223072E8B002B1B8D /* SplashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9CF813123072E8B002B1B8D /* SplashView.xib */; };
 		D9D6F8FB22EF85CA003DC7EA /* TeamsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D6F8FA22EF85CA003DC7EA /* TeamsListCoordinator.swift */; };
 		D9D6F8FD22EF89AA003DC7EA /* TeamsDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D6F8FC22EF89AA003DC7EA /* TeamsDetailsCoordinator.swift */; };
 		D9D6F8FF22F04931003DC7EA /* DriversListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D6F8FE22F04931003DC7EA /* DriversListCoordinator.swift */; };
 		D9D6F90122F04947003DC7EA /* DriversDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D6F90022F04947003DC7EA /* DriversDetailsCoordinator.swift */; };
-		D9D6F90322F04C73003DC7EA /* Main-CoordinatingResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D6F90222F04C73003DC7EA /* Main-CoordinatingResponder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,14 +84,13 @@
 		D9745A3922F9F261003F6838 /* FormulaRacing.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FormulaRacing.xcdatamodel; sourceTree = "<group>"; };
 		D9745A3C22FA486B003F6838 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		D9745A5B22FADC05003F6838 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		D9CF812D23072E2D002B1B8D /* SplashCoordinating-Responder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashCoordinating-Responder.swift"; sourceTree = "<group>"; };
+		D9780BA42314DB1500730B54 /* AppEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEvents.swift; sourceTree = "<group>"; };
 		D9CF812F23072E6A002B1B8D /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		D9CF813123072E8B002B1B8D /* SplashView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashView.xib; sourceTree = "<group>"; };
 		D9D6F8FA22EF85CA003DC7EA /* TeamsListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsListCoordinator.swift; sourceTree = "<group>"; };
 		D9D6F8FC22EF89AA003DC7EA /* TeamsDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsDetailsCoordinator.swift; sourceTree = "<group>"; };
 		D9D6F8FE22F04931003DC7EA /* DriversListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversListCoordinator.swift; sourceTree = "<group>"; };
 		D9D6F90022F04947003DC7EA /* DriversDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversDetailsCoordinator.swift; sourceTree = "<group>"; };
-		D9D6F90222F04C73003DC7EA /* Main-CoordinatingResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main-CoordinatingResponder.swift"; sourceTree = "<group>"; };
 		E61003AAD9E58228307FDFAB /* Pods-Coordinate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coordinate.debug.xcconfig"; path = "Target Support Files/Pods-Coordinate/Pods-Coordinate.debug.xcconfig"; sourceTree = "<group>"; };
 		FA5DDA218E0AA81A7E463120 /* Pods_Coordinate_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coordinate_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -159,6 +157,7 @@
 				D908AAD322ED999F00EE68C9 /* AppCoordinator.swift */,
 				D908AAD722EDA24E00EE68C9 /* AppViewController.swift */,
 				D908AAA222EAE04900EE68C9 /* Info.plist */,
+				D9780BA42314DB1500730B54 /* AppEvents.swift */,
 			);
 			path = "Coordinate-demo";
 			sourceTree = "<group>";
@@ -171,7 +170,6 @@
 				D908AAAF22EAE32900EE68C9 /* Profile */,
 				D908AAAB22EAE26700EE68C9 /* MainViewController.swift */,
 				D908AAD922EDA55F00EE68C9 /* MainCoordinator.swift */,
-				D9D6F90222F04C73003DC7EA /* Main-CoordinatingResponder.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -298,7 +296,6 @@
 			isa = PBXGroup;
 			children = (
 				D941018F2307372C00A4FBB3 /* SplashCoordinator.swift */,
-				D9CF812D23072E2D002B1B8D /* SplashCoordinating-Responder.swift */,
 				D9CF812F23072E6A002B1B8D /* SplashViewController.swift */,
 				D9CF813123072E8B002B1B8D /* SplashView.xib */,
 			);
@@ -443,10 +440,9 @@
 				D908AAC622EB07D400EE68C9 /* TeamsDetailsViewController.swift in Sources */,
 				D908AAD822EDA24E00EE68C9 /* AppViewController.swift in Sources */,
 				D90221E422FC679800137CEF /* TeamExtension.swift in Sources */,
-				D9CF812E23072E2D002B1B8D /* SplashCoordinating-Responder.swift in Sources */,
 				D94101902307372C00A4FBB3 /* SplashCoordinator.swift in Sources */,
-				D9D6F90322F04C73003DC7EA /* Main-CoordinatingResponder.swift in Sources */,
 				D908AAB722EAE52100EE68C9 /* TeamsNavigationViewController.swift in Sources */,
+				D9780BA52314DB1500730B54 /* AppEvents.swift in Sources */,
 				D908AAB522EAE3CE00EE68C9 /* DriversDetailsViewController.swift in Sources */,
 				D9D6F8FF22F04931003DC7EA /* DriversListCoordinator.swift in Sources */,
 				D9745A5C22FADC05003F6838 /* DataManager.swift in Sources */,

@@ -39,14 +39,30 @@ class DriversCoordinator: NavigationCoordinator<DriversNavigationViewController>
         self.goTo(activeRoute)
     }
     
-    // MARK: - CoordinatingResponder
+    // MARK: - Events
     
-    override func didSelect(driver: Driver) {
-        self.goTo(.driver(driver))
+    override func interceptEvent(_ event: CoordinateEvents) -> Bool {
+        if let event = event as? AppEvents.Teams {
+            return interceptEvent(event)
+        } else if let event = event as? AppEvents.Drivers {
+            return interceptEvent(event)
+        }
+        
+        return false
     }
     
-    override func didSelect(team: Team) {
-        self.goTo(.team(team))
+    private func interceptEvent(_ event: AppEvents.Teams) -> Bool {
+        if case .didSelect(let team) = event {
+            self.goTo(.team(team))
+        }
+        return false
+    }
+    
+    private func interceptEvent(_ event: AppEvents.Drivers) -> Bool {
+        if case .didSelect(let driver) = event {
+            self.goTo(.driver(driver))
+        }
+        return false
     }
 }
 

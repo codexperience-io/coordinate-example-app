@@ -8,7 +8,8 @@
 //
 
 import UIKit
+import Coordinate
 
-class MainViewController: UITabBarController {
-    
+class MainViewController: UITabBarController, Coordinated {
+    var parentCoordinator: Coordinating?
 }

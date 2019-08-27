@@ -8,7 +8,8 @@
 //
 
 import UIKit
+import Coordinate
 
-class TeamsNavigationViewController: UINavigationController {
-    
+class TeamsNavigationViewController: UINavigationController, Coordinated {
+    var parentCoordinator: Coordinating?
 }

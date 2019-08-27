@@ -31,17 +31,18 @@ class TeamsDetailsCoordinator: Coordinator<TeamsDetailsViewController>, HasDepen
         rootViewController.team = team
     }
     
-    override func setFavorite(team: Team) {
-        dependencies?.dataManager.setFavorite(team: team)
-        
-        // To make sure that the parent Coordinators will receive this message, we need to do this
-        coordinatingResponder?.setFavorite(team: team)
-    }
+    // MARK: - Events
     
-    override func unsetFavorite(team: Team) {
-        dependencies?.dataManager.unsetFavorite(team: team)
+    override func interceptEvent(_ event: CoordinateEvents) -> Bool {
         
-        // To make sure that the parent Coordinators will receive this message, we need to do this
-        coordinatingResponder?.unsetFavorite(team: team)
+        if let event = event as? AppEvents.Teams {
+            if case .setFavorite(let team) = event {
+                dependencies?.dataManager.setFavorite(team: team)
+            } else if case .unsetFavorite(let team) = event {
+                dependencies?.dataManager.unsetFavorite(team: team)
+            }
+        }
+        
+        return false
     }
 }

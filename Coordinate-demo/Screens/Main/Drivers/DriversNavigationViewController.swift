@@ -8,7 +8,8 @@
 //
 
 import UIKit
+import Coordinate
 
-class DriversNavigationViewController: UINavigationController {
-    
+class DriversNavigationViewController: UINavigationController, Coordinated {
+    var parentCoordinator: Coordinating?
 }

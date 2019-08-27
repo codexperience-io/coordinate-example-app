@@ -76,9 +76,9 @@ extension FavoritesListViewController {
                 let managedObject = list[indexPath.row]
                 
                 if let team = managedObject as? Team {
-                    unsetFavorite(team: team)
+                    emitEvent(AppEvents.Teams.unsetFavorite(team))
                 } else if let driver = managedObject as? Driver {
-                    unsetFavorite(driver: driver)
+                    emitEvent(AppEvents.Drivers.unsetFavorite(driver))
                 }
             }
         }
@@ -89,9 +89,9 @@ extension FavoritesListViewController {
             let managedObject = list[indexPath.row]
             
             if let team = managedObject as? Team {
-                didSelect(team: team)
+                emitEvent(AppEvents.Teams.didSelect(team))
             } else if let driver = managedObject as? Driver {
-                didSelect(driver: driver)
+                emitEvent(AppEvents.Drivers.didSelect(driver))
             }
         }
     }

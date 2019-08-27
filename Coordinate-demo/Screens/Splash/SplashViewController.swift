@@ -8,8 +8,10 @@
 //
 
 import UIKit
+import Coordinate
 
-class SplashViewController: UIViewController {
+class SplashViewController: UIViewController, Coordinated {
+    var parentCoordinator: Coordinating?
     
     @IBOutlet weak var titleImage: UIImageView!
     @IBOutlet weak var coordinateLogoImage: UIImageView!
@@ -32,7 +34,7 @@ class SplashViewController: UIViewController {
             }, completion: { [weak self] _ in
                 //Lets give it a second so its not too fast...
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self?.splashDidFinish()
+                    self?.emitEvent(AppEvents.Splash.didFinish)
                 }
         })
     }

@@ -8,8 +8,10 @@
 //
 
 import UIKit
+import Coordinate
 
-class DriversListViewController: UITableViewController {
+class DriversListViewController: UITableViewController, Coordinated {
+    var parentCoordinator: Coordinating?
     
     var data = [Driver]() {
         didSet {
@@ -62,7 +64,7 @@ extension DriversListViewController {
         if data.indices.contains(indexPath.row) {
             let driver = data[indexPath.row]
             
-            didSelect(driver: driver)
+            emitEvent(AppEvents.Drivers.didSelect(driver))
         }
     }
 }

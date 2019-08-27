@@ -8,9 +8,11 @@
 //
 
 import UIKit
+import Coordinate
 
-class TeamsListViewController: UITableViewController {
-    
+class TeamsListViewController: UITableViewController, Coordinated {
+    var parentCoordinator: Coordinating?
+
     var data = [Team]() {
         didSet {
             if isViewLoaded {
@@ -62,7 +64,7 @@ extension TeamsListViewController {
         if data.indices.contains(indexPath.row) {
             let team = data[indexPath.row]
             
-            didSelect(team: team)
+            emitEvent(AppEvents.Teams.didSelect(team))
         }
     }
 }

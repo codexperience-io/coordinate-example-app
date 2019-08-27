@@ -44,7 +44,7 @@ class MainCoordinator: TabBarCoordinator<MainViewController>, HasDependencies {
     /*
         Example override to intercept the calls to change Tabs
     */
-    override func tabTapped(for coordinator: Coordinated) {
+    override func tabTapped(for coordinator: Coordinating) {
         
         // Use our "showScreen()" method so we can keep track of which Tab is selected, and do other things if we want
         switch coordinator {
@@ -60,30 +60,37 @@ class MainCoordinator: TabBarCoordinator<MainViewController>, HasDependencies {
         }
     }
     
-    // MARK: - CoordinatingResponder
+    // MARK: - Events
     
-    override func setFavorite(team: Team) {
-        self.updateProfileTabIcon()
-    }
-    
-    override func unsetFavorite(team: Team) {
-        self.updateProfileTabIcon()
-    }
-    
-    override func setFavorite(driver: Driver) {
-        self.updateProfileTabIcon()
-    }
-    
-    override func unsetFavorite(driver: Driver) {
-        self.updateProfileTabIcon()
-    }
-    
-    override func didSelect(team: Team) {
-        goTo(.teams(.team(team)))
-    }
-    
-    override func didSelect(driver: Driver) {
-        goTo(.drivers(.driver(driver)))
+    override func interceptEvent(_ event: CoordinateEvents) -> Bool {
+        
+        if let event = event as? AppEvents.Teams {
+            
+            switch event {
+            case .setFavorite,
+                .unsetFavorite:
+                self.updateProfileTabIcon()
+                return true
+            case .didSelect(let team):
+                goTo(.teams(.team(team)))
+                return true
+            }
+            
+        } else if let event = event as? AppEvents.Drivers {
+            
+            switch event {
+            case .setFavorite,
+                 .unsetFavorite:
+                self.updateProfileTabIcon()
+                return true
+            case .didSelect(let driver):
+                goTo(.drivers(.driver(driver)))
+                return true
+            }
+            
+        }
+        
+        return false
     }
 }
 

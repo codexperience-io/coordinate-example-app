@@ -8,8 +8,10 @@
 //
 
 import UIKit
+import Coordinate
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, Coordinated {
+    var parentCoordinator: Coordinating?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!

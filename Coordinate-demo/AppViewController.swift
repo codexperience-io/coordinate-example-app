@@ -8,7 +8,8 @@
 //
 
 import UIKit
+import Coordinate
 
-class AppViewController: UIViewController {
-    
+class AppViewController: UIViewController, Coordinated {
+    var parentCoordinator: Coordinating?
 }

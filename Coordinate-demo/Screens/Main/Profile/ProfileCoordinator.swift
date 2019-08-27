@@ -31,23 +31,29 @@ class ProfileCoordinator: Coordinator<ProfileViewController>, HasDependencies {
         rootViewController.profile = dependencies?.dataManager.getProfile()
     }
     
-    // MARK: - CoordinatingResponder
+    // MARK: - Events
     
-    override func unsetFavorite(team: Team) {
-        dependencies?.dataManager.unsetFavorite(team: team)
+    override func interceptEvent(_ event: CoordinateEvents) -> Bool {
+        if let event = event as? AppEvents.Teams {
+            return interceptEvent(event)
+        } else if let event = event as? AppEvents.Drivers {
+            return interceptEvent(event)
+        }
         
-        rootViewController.profile = dependencies?.dataManager.getProfile()
-        
-        // Keep the event bubbling up
-        coordinatingResponder?.unsetFavorite(team: team)
+        return false
     }
     
-    override func unsetFavorite(driver: Driver) {
-        dependencies?.dataManager.unsetFavorite(driver: driver)
-        
-        rootViewController.profile = dependencies?.dataManager.getProfile()
-        
-        // Keep the event bubbling up
-        coordinatingResponder?.unsetFavorite(driver: driver)
+    private func interceptEvent(_ event: AppEvents.Teams) -> Bool {
+        if case .unsetFavorite(let team) = event {
+            dependencies?.dataManager.unsetFavorite(team: team)
+        }
+        return false
+    }
+    
+    private func interceptEvent(_ event: AppEvents.Drivers) -> Bool {
+        if case .unsetFavorite(let driver) = event {
+            dependencies?.dataManager.unsetFavorite(driver: driver)
+        }
+        return false
     }
 }

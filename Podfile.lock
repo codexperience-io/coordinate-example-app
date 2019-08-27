@@ -10,7 +10,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Coordinate:
-    :commit: 45de855a66d6e7cec3fd3a11976f39ef06ee9f76
+    :commit: 50a9f1a7248e6b5a15e976ddf52f6555cbd89f6e
     :git: https://github.com/codexperience-io/coordinate.git
 
 SPEC CHECKSUMS:

@@ -31,17 +31,18 @@ class DriversDetailsCoordinator: Coordinator<DriversDetailsViewController>, HasD
         rootViewController.driver = driver
     }
     
-    override func setFavorite(driver: Driver) {
-        dependencies?.dataManager.setFavorite(driver: driver)
-        
-        // To make sure that the parent Coordinators will receive this message, we need to do this
-        coordinatingResponder?.setFavorite(driver: driver)
-    }
+    // MARK: - Events
     
-    override func unsetFavorite(driver: Driver) {
-        dependencies?.dataManager.unsetFavorite(driver: driver)
+    override func interceptEvent(_ event: CoordinateEvents) -> Bool {
         
-        // To make sure that the parent Coordinators will receive this message, we need to do this
-        coordinatingResponder?.unsetFavorite(driver: driver)
+        if let event = event as? AppEvents.Drivers {
+            if case .setFavorite(let driver) = event {
+                dependencies?.dataManager.setFavorite(driver: driver)
+            } else if case .unsetFavorite(let driver) = event {
+                dependencies?.dataManager.unsetFavorite(driver: driver)
+            }
+        }
+        
+        return false
     }
 }

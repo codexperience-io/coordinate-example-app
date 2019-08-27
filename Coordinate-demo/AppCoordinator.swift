@@ -38,12 +38,20 @@ class AppCoordinator: ContainerCoordinator<AppViewController>, HasDependencies {
         self.dependencies?.dataManager.save()
     }
     
-    // MARK: - CoordinatingResponder
-    
-    override func splashDidFinish() {
-        goTo(.mainNavigation)
+    // MARK: - Events
+
+    override func interceptEvent(_ event: CoordinateEvents) -> Bool {
+        
+        if let event = event as? AppEvents.Splash {
+            switch event {
+            case .didFinish:
+                goTo(.mainNavigation)
+                return true
+            }
+        }
+        
+        return false
     }
-    
 }
 
 extension AppCoordinator: HasRoutes {

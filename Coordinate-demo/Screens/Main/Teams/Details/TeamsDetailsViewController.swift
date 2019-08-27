@@ -8,8 +8,10 @@
 //
 
 import UIKit
+import Coordinate
 
-class TeamsDetailsViewController: UIViewController, HasFavoriteButton {
+class TeamsDetailsViewController: UIViewController, HasFavoriteButton, Coordinated {
+    var parentCoordinator: Coordinating?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var driver1Button: UIButton!
@@ -17,13 +19,13 @@ class TeamsDetailsViewController: UIViewController, HasFavoriteButton {
     
     @IBAction func driver1ButtonDidTouch(_ sender: Any) {
         if let driver = self.sortedDrivers.first {
-            didSelect(driver: driver)
+            emitEvent(AppEvents.Drivers.didSelect(driver))
         }
     }
     
     @IBAction func driver2ButtonDidTouch(_ sender: Any) {
         if let driver = self.sortedDrivers.last {
-            didSelect(driver: driver)
+            emitEvent(AppEvents.Drivers.didSelect(driver))
         }
     }
     
@@ -68,6 +70,7 @@ class TeamsDetailsViewController: UIViewController, HasFavoriteButton {
         self.configureFavoriteButton()
         
         if let team = team, team.isFavorite() {
+            
             setFavoriteButtonIcon(true)
         } else {
             setFavoriteButtonIcon(false)
@@ -78,10 +81,10 @@ class TeamsDetailsViewController: UIViewController, HasFavoriteButton {
         guard let team = self.team else { return }
         
         if team.isFavorite() {
-            unsetFavorite(team: team)
+            emitEvent(AppEvents.Teams.unsetFavorite(team))
             setFavoriteButtonIcon(false)
         } else {
-            setFavorite(team: team)
+            emitEvent(AppEvents.Teams.setFavorite(team))
             setFavoriteButtonIcon(true)
         }
     }
