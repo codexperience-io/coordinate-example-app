@@ -21,7 +21,7 @@ class DataManager: NSObject {
     }
     
     func start(with completion: @escaping () -> Void = {}) {
-        self.persistentContainer.loadPersistentStores(completionHandler: { [weak self] (storeDescription, error) in
+        self.persistentContainer.loadPersistentStores(completionHandler: { [weak self] _, error in
             
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -53,7 +53,7 @@ class DataManager: NSObject {
         let drivers = self.getDrivers()
         let profile = self.getProfile()
         
-        if (teams.isEmpty || drivers.isEmpty || profile == nil) {
+        if teams.isEmpty || drivers.isEmpty || profile == nil {
             
             self.deleteAll()
             self.saveContext()
@@ -236,7 +236,7 @@ class DataManager: NSObject {
         return fetchedProfiles?.first
     }
     
-    func getProfileFavorites() -> (total: Int, [Team], [Driver])? {
+    func getProfileFavorites() -> ([Team], [Driver])? {
         return getProfile()?.getFavorites()
     }
     

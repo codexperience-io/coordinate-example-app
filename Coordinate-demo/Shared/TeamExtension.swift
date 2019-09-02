@@ -9,14 +9,14 @@
 
 // Convenience methods for automatically generated Team class
 extension Team {
-    
+
     public func isFavorite() -> Bool {
         var isFavorite = false
-        
-        if let count = self.favorite_in_profiles?.allObjects.count, count > 0 {
+
+        if self.favorite_in_profiles?.allObjects.isEmpty == false {
             isFavorite = true
         }
-        
+
         return isFavorite
     }
 }

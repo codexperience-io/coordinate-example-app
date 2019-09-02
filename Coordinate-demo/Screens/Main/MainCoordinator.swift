@@ -11,41 +11,41 @@ import UIKit
 import Coordinate
 
 class MainCoordinator: TabBarCoordinator<MainViewController>, HasDependencies {
-    
+
     var dependencies: AppDependencies?
-    
+
     var activeRoute: Route = .teams(.list)
-    
+
     // MARK: - Coordinator lifecycle
-    
+
     override func start(with completion: @escaping () -> Void = {}) {
         super.start(with: completion)
-        
+
         // Just as you would use UITabBarController.setControllers() to set the UIViewControllers and Tabs, only with Coordinators...
         self.setCoordinators([
             TeamsCoordinator(),
             DriversCoordinator(),
             ProfileCoordinator()
         ])
- 
+
         self.goTo(activeRoute)
     }
-        
+
     deinit {
     }
-        
+
     override func activate() {
         super.activate()
         self.goTo(activeRoute)
     }
-    
+
     // MARK: - Navigation
-    
+
     /*
         Example override to intercept the calls to change Tabs
     */
     override func tabTapped(for coordinator: Coordinating) {
-        
+
         // Use our "showScreen()" method so we can keep track of which Tab is selected, and do other things if we want
         switch coordinator {
         case is TeamsCoordinator:
@@ -59,13 +59,13 @@ class MainCoordinator: TabBarCoordinator<MainViewController>, HasDependencies {
             return
         }
     }
-    
+
     // MARK: - Events
-    
+
     override func interceptEvent(_ event: CoordinateEvents) -> Bool {
-        
+
         if let event = event as? AppEvents.Teams {
-            
+
             switch event {
             case .setFavorite,
                 .unsetFavorite:
@@ -75,9 +75,9 @@ class MainCoordinator: TabBarCoordinator<MainViewController>, HasDependencies {
                 goTo(.teams(.team(team)))
                 return true
             }
-            
+
         } else if let event = event as? AppEvents.Drivers {
-            
+
             switch event {
             case .setFavorite,
                  .unsetFavorite:
@@ -87,9 +87,9 @@ class MainCoordinator: TabBarCoordinator<MainViewController>, HasDependencies {
                 goTo(.drivers(.driver(driver)))
                 return true
             }
-            
+
         }
-        
+
         return false
     }
 }
@@ -142,7 +142,9 @@ private extension MainCoordinator {
     // MARK: - Internal
     
     func updateProfileTabIcon() {
-        guard let (total, _, _) = dependencies?.dataManager.getProfileFavorites() else { return }
+        guard let (teams, drivers) = dependencies?.dataManager.getProfileFavorites() else { return }
+        
+        let total = teams.count + drivers.count
         
         var newValue: String?
         

@@ -9,22 +9,19 @@
 
 // Convenience methods for automatically generated Profile class
 extension Profile {
-    
-    func getFavorites() -> (total: Int, [Team], [Driver]) {
-        var total = 0
+
+    func getFavorites() -> ([Team], [Driver]) {
         var teams = [Team]()
         var drivers = [Driver]()
-        
+
         if let favoriteTeams = self.favorite_teams?.allObjects as? [Team] {
-            total += favoriteTeams.count
             teams = favoriteTeams
         }
-        
+
         if let favoriteDrivers = self.favorite_drivers?.allObjects as? [Driver] {
-            total += favoriteDrivers.count
             drivers = favoriteDrivers
         }
-        
-        return (total, teams, drivers)
+
+        return (teams, drivers)
     }
 }
