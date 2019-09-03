@@ -2,20 +2,15 @@ PODS:
   - Coordinate (1.0.0)
 
 DEPENDENCIES:
-  - Coordinate (from `https://github.com/codexperience-io/coordinate.git`)
+  - Coordinate
 
-EXTERNAL SOURCES:
-  Coordinate:
-    :git: https://github.com/codexperience-io/coordinate.git
-
-CHECKOUT OPTIONS:
-  Coordinate:
-    :commit: 50a9f1a7248e6b5a15e976ddf52f6555cbd89f6e
-    :git: https://github.com/codexperience-io/coordinate.git
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Coordinate
 
 SPEC CHECKSUMS:
   Coordinate: 7acc7ee476e9ef58f1894809595bef8a6c1bc2f7
 
-PODFILE CHECKSUM: 575037e05b36dc4dee54625ab23dc4f328e66def
+PODFILE CHECKSUM: 4f4aface28573549e6c2d360f12b48e23d3013db
 
 COCOAPODS: 1.6.1

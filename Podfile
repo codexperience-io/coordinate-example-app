@@ -6,6 +6,6 @@ target 'Coordinate-demo' do
   use_frameworks!
 
   # Pods for Coordinate
-  pod 'Coordinate', :git => 'https://github.com/codexperience-io/coordinate.git'
+  pod 'Coordinate'
 
 end

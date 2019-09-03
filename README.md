@@ -17,11 +17,13 @@ Pretty simple, right? The idea is to illustrate how simple it is to **re-use** U
 
 ## Installation
 
-To install, at the root folder (where the Podfile is) run:
+To install, at the root folder (where the Podfile is) run on Terminal:
 
 ```
 pod install
 ```
+
+After that you can open Coordinate-demo.xcworkspace (not Coordinate-demo.xcodeproj!) with Xcode and hit Run.
 
 ## Documentation
 
