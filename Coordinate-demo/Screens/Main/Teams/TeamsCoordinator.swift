@@ -46,6 +46,7 @@ class TeamsCoordinator: NavigationCoordinator<TeamsNavigationViewController>, Ha
     private func interceptEvent(_ event: AppEvents.Teams) -> Bool {
         if case .didSelect(let team) = event {
             self.goTo(.team(team))
+            return false
         }
         return false
     }
@@ -53,6 +54,7 @@ class TeamsCoordinator: NavigationCoordinator<TeamsNavigationViewController>, Ha
     private func interceptEvent(_ event: AppEvents.Drivers) -> Bool {
         if case .didSelect(let driver) = event {
             self.goTo(.driver(driver))
+            return true
         }
         return false
     }
@@ -81,7 +83,7 @@ extension TeamsCoordinator: HasRoutes {
     
     private func showListScreen() {
         let coordinator = getCached(TeamsListCoordinator.self) ?? TeamsListCoordinator()
-        self.root(coordinator)
+        self.root(coordinator, animated: true)
     }
     
     private func showTeamScreen(_ team: Team) {

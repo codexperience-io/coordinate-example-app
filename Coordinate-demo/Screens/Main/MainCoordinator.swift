@@ -49,9 +49,21 @@ class MainCoordinator: TabBarCoordinator<MainViewController>, HasDependencies {
         // Use our "showScreen()" method so we can keep track of which Tab is selected, and do other things if we want
         switch coordinator {
         case is TeamsCoordinator:
-            goTo(.teams(.list))
+            
+            var finalSubRoute: TeamsCoordinator.Route?
+            if case .teams(_) = activeRoute {
+                finalSubRoute = .list
+            }
+            
+            goTo(.teams(finalSubRoute))
         case is DriversCoordinator:
-            goTo(.drivers(.list))
+            
+            var finalSubRoute: DriversCoordinator.Route?
+            if case .drivers(_) = activeRoute {
+                finalSubRoute = .list
+            }
+            
+            goTo(.drivers(finalSubRoute))
         case is ProfileCoordinator:
             goTo(.profile)
         default:
@@ -105,10 +117,10 @@ extension MainCoordinator: HasRoutes {
     
     func goTo(_ route: Route) {
         switch route {
-        case .teams(let subScreen):
-            showTeamsScreen(subScreen)
-        case .drivers(let subScreen):
-            showDriversScreen(subScreen)
+        case .teams(let subRoute):
+            showTeamsScreen(subRoute)
+        case .drivers(let subRoute):
+            showDriversScreen(subRoute)
         case .profile:
             showProfileScreen()
         }

@@ -54,6 +54,7 @@ class DriversCoordinator: NavigationCoordinator<DriversNavigationViewController>
     private func interceptEvent(_ event: AppEvents.Teams) -> Bool {
         if case .didSelect(let team) = event {
             self.goTo(.team(team))
+            return true
         }
         return false
     }
@@ -61,6 +62,7 @@ class DriversCoordinator: NavigationCoordinator<DriversNavigationViewController>
     private func interceptEvent(_ event: AppEvents.Drivers) -> Bool {
         if case .didSelect(let driver) = event {
             self.goTo(.driver(driver))
+            return true
         }
         return false
     }
@@ -85,7 +87,7 @@ extension DriversCoordinator: HasRoutes {
     private func showListScreen() {
         let coordinator = getCached(DriversListCoordinator.self) ?? DriversListCoordinator()
         coordinator.dependencies = dependencies
-        self.root(coordinator)
+        self.root(coordinator, animated: true)
     }
     
     private func showTeamScreen(_ team: Team) {
